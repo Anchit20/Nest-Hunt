@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {Link, useNavigate} from 'react-router-dom'
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import OAuth from '../components/OAuth'
 
 
 function SignIn() {
@@ -35,7 +38,7 @@ function SignIn() {
       navigate('/')
     }
   } catch (error) {
-    console.log(error)
+    toast.error('Incorrect email or password')
   }
 }
 
@@ -64,7 +67,7 @@ function SignIn() {
               </button>
             </div>
           </form>
-
+          <OAuth/>
           <Link to='/sign-up' className='registerLink'>Sign Up Instead</Link>
         </div>
       </>
