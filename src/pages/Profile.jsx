@@ -1,9 +1,12 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
+import { Link } from 'react-router-dom';
 import { getAuth, updateProfile } from 'firebase/auth';
 import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {toast} from 'react'
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 
 function Profile(){
@@ -72,6 +75,11 @@ function Profile(){
             <input type='text' id='email' className={!changeDetails ? 'profileEmail' : 'profileEmailActive'} disabled={!changeDetails} value={email} onChange={onChange}></input>
           </form>
         </div>
+        <Link to='/create-listing' className='createListing'>
+          <img src={homeIcon} alt="home"/>
+          <p>sell or rent home</p>
+          <img src={arrowRight} alt="arrow right"/>
+        </Link>
       </main>
     </div>
   )
